@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>More About Me</title>
+  <style>
+    html, body {
+      margin: 0; 
+      padding: 0; 
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: #DDF8FF; 
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* common.css */
+
+.fade-out {
+  animation: fadeOut 0.5s forwards; /* зникаємо за 0.5 секунди */
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards; /* з'являємось за 0.5 секунди */
+  opacity: 0; /* початково невидимі */
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+    .header-logo {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 90px;
+      height: 90px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: transparent; 
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: none; 
+    }
+    .header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+   
+    .images-wrapper {
+      margin: 130px 40px 40px 40px;
+      overflow: hidden; 
+      border-radius: 20px; 
+    }
+
+    .images-scroll {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto; 
+      overflow-y: hidden; 
+      padding-bottom: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,0,0,0.2) transparent;
+      
+    }
+    .images-scroll::-webkit-scrollbar {
+      height: 10px;
+    }
+    .images-scroll::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.2);
+      border-radius: 5px;
+    }
+    .images-scroll img {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .images-scroll img:hover {
+      transform: scale(1.05);
+    }
+
+        .header-logo {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .header-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .header-logo:hover {
+      transform: scale(1.0);
+    }
+
+    .gradient-text-block {
+      width: 100vw;
+      min-height: calc(100vh - 400px);
+      margin: 40px 0 0 0;
+      padding: 30px 40px;
+      background: linear-gradient(to left, #a3cef1 0%, #ffffff 100%);
+      border-radius: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      color: #000;
+      font-size: 18px;
+    }
+
+   .header-logo:active {
+  background-color: #99cbf3;
+  border-radius: 10px;
+  transform: scale(0.96);
+  transition: all 0.1s ease;
+  display: inline-block;
+}
+
+
+    .gradient-text-block p {
+      margin: 0;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      flex: 1 1 40%;
+      max-width: 45%;
+      user-select: text;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 768px) {
+      .header-logo {
+        width: 70px;
+        height: 70px;
+        top: 15px;
+        right: 15px;
+      }
+      .images-wrapper {
+        margin: 110px 20px 20px 20px;
+      }
+      .images-scroll {
+        gap: 20px;
+      }
+      .images-scroll img {
+        width: 240px;
+        height: 240px;
+      }
+      .gradient-text-block {
+        margin: 20px 0 40px 0;
+        padding: 20px 30px;
+        min-height: auto;
+        font-size: 16px;
+        border-radius: 0 20px 20px 0;
+        width: 100vw;
+      }
+      .gradient-text-block p {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="navigation.html" class="header-logo" title="Back to Main Page">
+    <img src="logo.png" alt="Logo" />
+  </a>
+
+  <div class="images-wrapper">
+    <div class="images-scroll">
+      <img src="image1.jpg" alt="Image 1" />
+      <img src="image2.jpg" alt="Image 2" />
+      <img src="image3.jpg" alt="Image 3" />
+      <img src="image6.jpg" alt="Image 4" />
+      <img src="image4.jpg" alt="Image 4" />
+      <img src="image5.jpg" alt="Image 4" />
+    </div>
+  </div>
+
+  <div class="gradient-text-block">
+    <p>I am from Kherson, I have lived there<br>
+with my parents for the last 15 years.</p>
+    <p>Due to unforeseen events, my family had to leave.
+There we ended up in Ivano-Frankivsk region.</p>
+    <p>There I successfully graduated from high school and<br>
+was waiting for the final exams to enter the university</p>
+    <p>After passing all the exams, I decided to enter<br>
+the Vasyl Stefanyk Precarpathian National University.</p>
+    <p>Currently, I am studying there, as a programmer. In the future, I hope to fully master this specialty<br>
+and continue to develop my skills                                                                           and I also have three cats.</p>
+  </div>
+
+</body>
+</html>
+
+<script>
+  const btn = document.getElementById('goBtn');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    // додати клас fade-out до body (або контейнера)
+    document.body.classList.add('fade-out');
+
+    // через 500 мс (тривалість анімації) зробити перехід
+    setTimeout(() => {
+      window.location.href = btn.getAttribute('data-target');
+    }, 500);
+  });
+
+  // Коли сторінка завантажується, додати fade-in
+  window.addEventListener('load', () => {
+    document.body.classList.add('fade-in');
+  });
+</script>

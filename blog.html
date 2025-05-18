@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blogs & Testimonials</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #DDF8FF;
+      font-family: Arial, sans-serif;
+      color: #000;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 30px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .top-button {
+      position: absolute;
+      top: -10px;  
+      right: 30px;
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      background: #DDF8FF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .top-button img {
+      width: 60%;
+      height: 60%;
+      object-fit: cover;
+    }
+    .top-button:hover {
+      transform: scale(1.1);
+    }
+
+    .section-label {
+      background-color: #b3e5fc;
+      color: rgb(0, 0, 0);
+      border-radius: 20px;
+      padding: 15px 40px;
+      font-size: 32px;
+      font-weight: bold;
+      user-select: none;
+      width: fit-content;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    }
+
+    .blogs-block {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .blog-photo {
+      flex: 1 1 calc(50% - 10px);
+      height: 250px;
+      border-radius: 15px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: filter 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-photo::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+      border-radius: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .blog-photo:hover::after {
+      background-color: rgba(0, 0, 0, 0);
+    }
+
+    /* Текст на блогах — курсив */
+    .blog-text {
+      position: absolute;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+      left: 15px;
+      right: 15px;
+      z-index: 2;
+      user-select: none;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      font-style: italic;
+    }
+
+    .blog-text.top {
+      top: 15px;
+    }
+
+    .blog-text.bottom {
+      bottom: 15px;
+    }
+
+    .testimonials-label {
+      background-color: #b3e5fc;
+      color: rgb(0, 0, 0);
+      border-radius: 20px;
+      padding: 15px 40px;
+      font-size: 32px;
+      font-weight: bold;
+      user-select: none;
+      width: fit-content;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    }
+
+    .wide-image {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      border-radius: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .wide-image::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      border-radius: 20px;
+      z-index: 1;
+    }
+
+    /* Текст справа вгорі — звичайний, трохи менший */
+    .wide-text-top-right {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      z-index: 2;
+      user-select: none;
+      font-style: normal;
+    }
+
+    /* Ліві тексти — звичайні */
+    .wide-text-left-group {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: normal;
+      z-index: 2;
+      user-select: none;
+      font-style: normal;
+    }
+
+    /* Курсив для тексту в лапках у великому блоці з більшим відступом зверху */
+    .wide-text-top-right i,
+    .wide-text-left-group i {
+      font-style: italic;
+      font-size: 16px;
+      display: block;
+      margin-top: 12px; /* Більший відступ зверху */
+    }
+
+    @media (max-width: 768px) {
+      .blogs-block {
+        flex-direction: column;
+      }
+      .blog-photo {
+        flex: 1 1 100%;
+        height: 200px;
+      }
+      .wide-image {
+        height: 250px;
+      }
+      .top-button {
+        top: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+      }
+      .top-button img {
+        width: 70%;
+        height: 70%;
+      }
+      .wide-text-top-right {
+        font-size: 16px;
+        top: 10px;
+        right: 10px;
+      }
+      .wide-text-left-group {
+        font-size: 16px;
+        top: 40px;
+        left: 10px;
+      }
+      .wide-text-top-right i,
+      .wide-text-left-group i {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="navigation.html" class="top-button" aria-label="Navigation Button">
+      <img src="logo.png" alt="Navigation Button" />
+    </a>
+
+    <div class="section-label">Blogs</div>
+
+    <div class="blogs-block">
+      <div class="blog-photo" style="background-image: url('moi foto2.jpg');">
+        <div class="blog-text top">
+          Sometimes I post and post stories<br>
+          on Instagram.<br>
+          I follow the university and<br>
+          trade union accounts.
+        </div>
+      </div>
+      <div class="blog-photo" style="background-image: url('moi foto1.jpg');">
+        <div class="blog-text bottom">
+          Well, everything is the same here.<br>
+          Ambassadors, reposts and likes.<br>
+          And my <i>"light"</i> is already 21 days old!
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-label">Testimonials</div>
+
+    <div class="wide-image" style="background-image: url('ta shtyka.jpg');">
+      <div class="wide-text-top-right">
+        Софія Чургулія<br>
+        студентка групи М-11<br>
+        <i>“спс я кнчл”</i>
+      </div>
+      <div class="wide-text-left-group">
+        <div>
+          Танасій Костиль<br>
+          студент та староста групи ІПЗ-12<br>
+          <i>“За келихом смачного пива обговорили<br>
+          всі деталі, якісно виконана робота, ДЯКУЮ”</i>
+        </div>
+        <div>
+          Андрієнко Олеся<br>
+          студентка групи ІПЗ-11<br>
+          <i>“Сама афігєнна роботи, яку я бачила”</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

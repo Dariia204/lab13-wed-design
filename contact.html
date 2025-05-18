@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #DDF8FF;
+      position: relative;
+    }
+
+    .page-container {
+      padding: 40px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .contact-label {
+      background-color: #b3e5fc;
+      border-radius: 25px;
+      padding: 15px 40px;
+      font-weight: bold;
+      font-size: 36px;
+      color: #000;
+      user-select: none;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .top-button {
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .top-button img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .top-button:hover {
+      transform: scale(1.1);
+    }
+
+    .content-section {
+      display: flex;
+      gap: 40px;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+
+    .left-column {
+      flex: 1;
+      min-width: 230px;
+    }
+
+    .image-text-pair {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .mini-image {
+      width: 185px;
+      height: 185px;
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 12px;
+      margin-right: 20px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      flex-shrink: 0;
+    }
+
+    .image-text {
+      font-size: 18px;
+      color: #333;
+    }
+
+    /* різні шрифти */
+    .font1 {
+      font-family: 'Georgia', serif;
+      font-weight: 600;
+    }
+    .font3 {
+      font-family: 'Courier New', Courier, monospace;
+      font-style: italic;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .font2 {
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+    .font4 {
+      font-family: 'Georgia', serif;
+      font-weight: bold;
+    }
+
+    .right-column {
+      flex: 1.3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 320px;
+      max-width: 480px;
+    }
+
+    .main-image-container {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 400px;
+      width: 100%;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* змінено з cover на contain, щоб не розтягувалось */
+      filter: brightness(0.8);
+      display: block;
+      background-color: #eee; /* для кращого вигляду, поки зображення завантажується */
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      pointer-events: none;
+    }
+
+    .input-overlay {
+      position: absolute;
+      bottom: 100px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      z-index: 10;
+      background: rgba(255 255 255 / 0.3);
+      padding: 15px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.5);
+      max-width: 320px;
+      box-sizing: border-box;
+    }
+
+    .input-overlay input {
+      width: 100%;       
+      height: 45px;       
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 18px;  
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.9);
+    }
+
+    .under-image-text {
+      background-color: #b3e5fc;
+      border-radius: 20px;
+      padding: 15px 30px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #000;
+      max-width: fit-content;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      margin-top: 15px;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1024px) {
+      .content-section {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+      .right-column {
+        max-width: 100%;
+        min-width: auto;
+        width: 100%;
+      }
+      .left-column {
+        min-width: auto;
+        width: 100%;
+      }
+      .main-image-container {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .content-section {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .main-image-container {
+        height: 250px;
+      }
+
+      .overlay-text {
+        font-size: 28px;
+      }
+
+      .mini-image {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        border-radius: 15px;
+      }
+
+      .input-overlay {
+        max-width: 100%;
+        bottom: 60px;
+        left: 10px;
+        right: 10px;
+        padding: 10px 15px;
+      }
+
+      .under-image-text {
+        max-width: 100%;
+        font-size: 20px;
+        white-space: normal;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="top-row">
+      <div class="contact-label">Contact</div>
+      <a href="navigation.html" class="top-button" aria-label="Navigation Button">
+        <img src="logo.png" alt="Navigation Button" />
+      </a>
+    </div>
+
+    <div class="content-section">
+      <div class="left-column">
+        <div class="image-text-pair">
+          <div class="mini-image" style="background-image: url('scrin1 (1).png');"></div>
+          <div class="image-text font1">Dariia_a</div>
+        </div>
+        <div class="image-text-pair">
+          <div class="mini-image" style="background-image: url('skrin2.png');"></div>
+          <div class="image-text font2">dasha2007makarenko@gmail.com</div>
+        </div>
+        <div class="image-text-pair">
+          <div class="mini-image" style="background-image: url('skrin3.png');"></div>
+          <div class="image-text font3">Dariia</div>
+        </div>
+        <div class="image-text-pair">
+          <div class="mini-image" style="background-image: url('skrin4.png');"></div>
+          <div class="image-text font4">Dariia Kyshenia</div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="main-image-container">
+          <img src="gmaile.png" class="main-image" alt="Main Contact Image" />
+          <div class="overlay-text"></div>
+
+          <div class="input-overlay">
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+          </div>
+        </div>
+        <div class="under-image-text">If you have any questions, just text to me!</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

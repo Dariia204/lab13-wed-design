@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More Page</title>
+  <style>
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; 
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* common.css */
+
+.fade-out {
+  animation: fadeOut 0.5s forwards; /* зникаємо за 0.5 секунди */
+}
+
+.fade-in {
+  animation: fadeIn 0.5s forwards; /* з'являємось за 0.5 секунди */
+  opacity: 0; /* початково невидимі */
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
+body {
+  background-image: url(fonDlaMore.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.header-image {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 80px auto 40px auto; /* центровано, відступи зверху і знизу */
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  max-width: 100%;
+}
+
+.logo:active {
+  background-color: #2f2f2f;
+  border-radius: 10px;
+  transform: scale(0.96);
+  transition: all 0.1s ease;
+}
+
+
+.image-box {
+  width: 300px;
+  height: 150px;
+  background-color: #cccccc;
+  border-radius: 15px;
+  margin-right: 30px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.logo {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 2; /* поверх затемнення */
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.text-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px 25px;
+  border-radius: 10px;
+  flex: 1;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin: 80px 20px 20px 20px;
+  }
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+    .image-box {
+    width: 150px;
+    height: 150px;
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+}
+
+  </style>
+</head>
+<body>
+   <a href="navigation.html" class="logo">
+  <img src="logo2.png" alt="Avatar" />
+</a>
+  <div class="content">
+    <div class="item">
+      <div class="image-box">
+        <img src="httml.png" alt="Image 1" />
+      </div>
+      <div class="text-box">Створюю адаптивні сайти з нуля для різних розмірів екранів.<br>
+Використовую Flexbox, Grid, медіа-запити, анімації, кастомні шрифти.<br>
+Оформлюю в єдиному фірмовому стилі.</div>
+    </div>
+
+    <div class="item">
+      <div class="image-box">
+        <img src="python.jpg" alt="Image 2" />
+      </div>
+      <div class="text-box">Використовую Python для автоматизації задач і аналізу даних.<br>
+Створював скрипти, що працюють зі структурами даних, файлівим<br>
+введенням/виведенням, логікою прийняття рішень.</div>
+    </div>
+
+    <div class="item">
+      <div class="image-box">
+        <img src="Cplusplus.png" alt="Image 3" />
+      </div>
+      <div class="text-box">Розробив симуляції (моделі поширення інфекції,<br>
+цифрові пристрої), однозв’язні та двозв’язні списки,<br>
+працював з масивами, структурами та STL без використання
+сторонніх бібліотек.</div>
+    </div>
+
+    <div class="item">
+      <div class="image-box">
+        <img src="figmaBoy.jpg" alt="Image 4" />
+      </div>
+      <div class="text-box">Розробляю повні дизайн-системи: від кольорової палітри та шрифтів<br>
+до прототипів головної і другорядних сторінок. Дотримуюсь адаптивності<br>
+й UX-принципів.</div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+<script>
+  const btn = document.getElementById('goBtn');
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    // додати клас fade-out до body (або контейнера)
+    document.body.classList.add('fade-out');
+
+    // через 500 мс (тривалість анімації) зробити перехід
+    setTimeout(() => {
+      window.location.href = btn.getAttribute('data-target');
+    }, 500);
+  });
+
+  // Коли сторінка завантажується, додати fade-in
+  window.addEventListener('load', () => {
+    document.body.classList.add('fade-in');
+  });
+</script>
